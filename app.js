@@ -2,6 +2,7 @@ const affichage = document.querySelector('.affichage');
 const btns = document.querySelectorAll('button');
 const inputs = document.querySelectorAll('input');
 const infoTxt = document.querySelector('.info-txt');
+let dejafait = false;
 
 const today = new Date();
 const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
@@ -35,6 +36,33 @@ function btnAction(e) {
 }
 
 function creerCookie(name, value, exp) {
+  infoTxt.innerText = '';
+
+  // Si le cookie a le meme nom
+
+  let cookies = document.cookie.split(';');
+  cookies.forEach((cookie) => {
+    cookie = cookie.trim();
+    let formatCookie = cookie.split('=');
+    if (formatCookie[0] === encodeURIComponent(name)) {
+      dejafait = true;
+    }
+  });
+
+  if (dejafait) {
+    infoTxt.innerText = `A cookie already have this name !`;
+    infoTxt.style.color = 'red';
+    return;
+  }
+
+  // if the cookie doesnt have any name
+
+  if (name.length === 0) {
+    infoTxt.innerText = `This cookie do not have any name`;
+    infoTxt.style.color = 'red';
+    return;
+  }
+
   document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(
     value,
   )};expires=${exp.toUTCString()}`;
