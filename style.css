@@ -19,7 +19,6 @@ ol[class] {
   padding: 0;
 }
 
-
 /* Remove default margin */
 body,
 h1,
@@ -79,11 +78,15 @@ select {
 
 .blink {
   border: 4px #ff0000 solid;
-  
+
   animation: blink 3s infinite;
 }
 
-@keyframes blink { 50% { border-color:#fff ; }  }
+@keyframes blink {
+  50% {
+    border-color: #fff;
+  }
+}
 
 /* CSS Reset end */
 
@@ -109,7 +112,7 @@ input {
 .container-btns {
   display: flex;
   justify-content: center;
-  margin-top : 20px;
+  margin-top: 20px;
 }
 
 button {
@@ -126,7 +129,6 @@ button {
   width: 75%;
   font-size: 40px;
   padding: 15px;
-
 }
 
 .info-txt {
