@@ -1,7 +1,7 @@
 const affichage = document.querySelector('.affichage');
 const btns = document.querySelectorAll('button');
 const inputs = document.querySelectorAll('input');
-const infoTxt = document.querySelector('.info-text');
+const infoTxt = document.querySelector('.info-txt');
 
 const today = new Date();
 const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
@@ -35,15 +35,13 @@ function btnAction(e) {
 }
 
 function creerCookie(name, value, exp) {
-  document.cookie = `${encodeURIComponant(name)}=${encodeURIComponant(
+  document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(
     value,
   )};expires=${exp.toUTCString()}`;
-  let info = document.querySelector('li');
+  let info = document.createElement('li');
   info.innerText = `Cookie ${name} créé.`;
   affichage.appendChild(info);
   setTimeout(() => {
     info.remove();
   }, 1500);
 }
-
-creerCookie();
