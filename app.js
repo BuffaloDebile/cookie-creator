@@ -37,6 +37,9 @@ function btnAction(e) {
 
 function creerCookie(name, value, exp) {
   infoTxt.innerText = '';
+  affichage.childNodes.forEach((child) => {
+    child.remove();
+  });
 
   // Si le cookie a le meme nom
 
@@ -72,4 +75,34 @@ function creerCookie(name, value, exp) {
   setTimeout(() => {
     info.remove();
   }, 1500);
+}
+
+function listeCookies() {
+  let cookies = document.cookie.split(';');
+  if (cookies.join() === '') {
+    infoTxt.innerText = 'No cookies to display';
+    return;
+  }
+
+  cookies.forEach((cookie) => {
+    cookie = cookie.trim();
+    let formatCookie = cookie.split('=');
+
+    infoTxt.innerHTML = 'click on a cookie to delete';
+    let item = document.createElement('li');
+    item.innerText = `Name : ${decodeURIComponent(
+      formatCookie[0],
+    )}; Valeur : ${decodeURIComponent(formatCookie[1])}`;
+    affichage.appendChild(item);
+
+    // Delete cookie
+
+    item.addEventListener('click', () => {
+      document.cookie = `${formatCookie[0]}=; expires${new Date(0)}`;
+      item.innerText = `Cookie ${formatCookie[0]} deleted`;
+      setTimeout(() => {
+        item.remove();
+      }, 1000);
+    });
+  });
 }

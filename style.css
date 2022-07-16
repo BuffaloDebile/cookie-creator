@@ -26,7 +26,6 @@ h2,
 h3,
 h4,
 p,
-ul[class],
 ol[class],
 li,
 figure,
@@ -136,4 +135,20 @@ button {
   padding: 20px;
   font-size: 20px;
   width: 75%;
+}
+
+.affichage {
+  display: flex;
+  flex-direction: column;
+  align-items: self-start;
+}
+
+.affichage ul {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.affichage li {
+  padding-bottom: 5px;
+  font-size: 15px;
 }
