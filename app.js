@@ -37,9 +37,10 @@ function btnAction(e) {
 
 function creerCookie(name, value, exp) {
   infoTxt.innerText = '';
-  affichage.childNodes.forEach((child) => {
-    child.remove();
-  });
+  affichage.innerHTML = '';
+  // affichage.childNodes.forEach((child) => {
+  //   child.remove();
+  // });
 
   // Si le cookie a le meme nom
 
@@ -70,7 +71,7 @@ function creerCookie(name, value, exp) {
     value,
   )};expires=${exp.toUTCString()}`;
   let info = document.createElement('li');
-  info.innerText = `Cookie ${name} créé.`;
+  info.innerText = `Cookie ${name} created.`;
   affichage.appendChild(info);
   setTimeout(() => {
     info.remove();
